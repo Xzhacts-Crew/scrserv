@@ -315,6 +315,11 @@ ufw allow from 192.168.1.5 to any port www
 
 ## Konfigurasi iptables
 Disini kita menggunakan iptables untuk drop DDos
+berikut adalah beberapa alasan kita menggunakan iptables
+- menolak paket-paket TCP yang memiliki semua flag TCP (ACK, URG, PSH, RST, SYN, dan FIN) diatur ke "NONE" atau tidak ada yang diatur
+-  Mencegah adanya paket tcp syn pada header yang  mengakibatkan suatu koneksi tcp menjadi lama karena melalui 3 langkah(3-way handshake)
+-  Menerapkan paket baru yang ditujukan ke port 80(http) akan ditandai dan dipindai apakah paket tersebut mencurigakan atau potensial serangan
+-  Menerapkan pemblokiran pada alamat ip yang mencoba terlalu sering mengakses port 80(http) dalam kurun waktu yang diterapkan
 ```bash
 iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP
 
