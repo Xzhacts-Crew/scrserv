@@ -327,7 +327,7 @@ iptables -A INPUT -p tcp ! --syn -m state --state NEW -j DROP
 
 iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --set
 
-iptables -I INPUT -p tcp --dport 80 -m state --state NEW --state NEW -m recent --update --seconds 10 --hitcount 100 -j DROP
+iptables -I INPUT -p tcp --dport 80 -m state --state NEW --state NEW -m recent --update --seconds 10 --hitcount 200 -j DROP
 ```
 
 simpan konfigurasi dan jalankan konfigurasi tersebut
